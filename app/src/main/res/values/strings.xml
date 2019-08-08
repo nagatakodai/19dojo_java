@@ -1,3 +1,18 @@
 <resources>
+
     <string name="app_name">Dojo2019</string>
+
+    <!-- ボタンの名称 -->
+    <string name="home_name">PROFILE</string>
+    <string name="qr_view">VIEW</string>
+    <string name="qr_read">READ</string>
+    <string name="keep">KEEP</string>
+
+    <!-- 入力欄の名称 -->
+    <string name="input_github">twitter</string>
+    <string name="input_twitter">github</string>
+    <string name="input_name">name</string>
+    <string name="test1">test</string>
+    <string name="list">list</string>
+
 </resources>
