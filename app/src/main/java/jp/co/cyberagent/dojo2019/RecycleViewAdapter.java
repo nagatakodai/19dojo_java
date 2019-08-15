@@ -29,8 +29,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.nameView.setText(Uri.decode(list.get(position).getName()));
-        holder.twitterView.setText(list.get(position).getTw());
-        holder.githubView.setText(list.get(position).getGh());
+        holder.twitterView.setText("TwitterID:"+list.get(position).getTw().substring(23));
+        holder.githubView.setText("GithubID:"+list.get(position).getGh().substring(22));
         holder.imageViewTw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
