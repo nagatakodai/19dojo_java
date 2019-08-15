@@ -1,5 +1,6 @@
 package jp.co.cyberagent.dojo2019;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
@@ -18,7 +19,6 @@ public class ListActivity extends AppCompatActivity {
 
         final RecyclerView rv = findViewById(R.id.RecyclerView);
 
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,9 +35,18 @@ public class ListActivity extends AppCompatActivity {
                         rv.setHasFixedSize(true);
                         rv.setLayoutManager(llm);
                         rv.setAdapter(adapter);
+
+                        /*Mainに戻る処理*/
+
                     }
                 });
             }
         }).start();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ListActivity.this, MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
     }
 }

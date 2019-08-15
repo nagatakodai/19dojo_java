@@ -3,6 +3,7 @@ package jp.co.cyberagent.dojo2019;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,8 +25,8 @@ public class QRCodeActivity extends AppCompatActivity {
         str[0] = data.getString("name", "none");
         str[1] = data.getString("github", "none");
         str[2] = data.getString("twitter", "none");
-        String qrData = "ca-tech://dojo/share?iam="+str[0]+"&tw="+str[1]+"&gh="+str[2]+"";
-        try {
+        String qrData = "ca-tech://dojo/share?iam="+Uri.encode(str[0])+"&tw="+str[1]+"&gh="+str[2]+"";
+            try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             //QRコードをBitmapで作成
             Bitmap bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 500, 500);

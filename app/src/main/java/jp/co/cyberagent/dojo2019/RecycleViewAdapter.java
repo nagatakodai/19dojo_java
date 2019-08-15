@@ -1,12 +1,14 @@
 package jp.co.cyberagent.dojo2019;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
@@ -25,7 +27,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.nameView.setText(list.get(position).getName());
+
+        holder.nameView.setText(Uri.decode(list.get(position).getName()));
         holder.twitterView.setText(list.get(position).getTw());
         holder.githubView.setText(list.get(position).getGh());
         holder.imageViewTw.setOnClickListener(new View.OnClickListener() {

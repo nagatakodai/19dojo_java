@@ -3,10 +3,10 @@
     <string name="app_name">Dojo2019</string>
 
     <!-- ボタンの名称 -->
-    <string name="home_name">PROFILE</string>
-    <string name="qr_view">VIEW</string>
-    <string name="qr_read">READ</string>
-    <string name="keep">KEEP</string>
+    <string name="home_name">編集</string>
+    <string name="qr_view">QR表示</string>
+    <string name="qr_read">QR読み取り</string>
+    <string name="keep">保存</string>
 
     <!-- 入力欄の名称 -->
     <string name="input_github">twitter</string>

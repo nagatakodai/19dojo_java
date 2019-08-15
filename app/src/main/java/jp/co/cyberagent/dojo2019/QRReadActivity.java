@@ -2,6 +2,8 @@ package jp.co.cyberagent.dojo2019;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -41,7 +43,7 @@ public class QRReadActivity extends AppCompatActivity {
             Uri.Builder builder = new Uri.Builder();
             builder.scheme("http");
             builder.authority("www.twitter.com");
-            builder.path(result.getContents().substring(indexStart+3 , indexEnd));
+            builder.path((result.getContents().substring(indexStart+3 , indexEnd)));
             user.setTw(builder.toString());
 
             indexStart = result.getContents().indexOf("gh=");
@@ -50,13 +52,21 @@ public class QRReadActivity extends AppCompatActivity {
             builder.path(result.getContents().substring(indexStart+3));
             user.setGh(builder.toString());
 
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     db.userDao().insertAll(user);
+                    new Handler(Looper.getMainLooper()).post(new Runnable() { //画面遷移
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(QRReadActivity.this, ListActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }).start();
-            } else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
 
@@ -67,10 +77,6 @@ public class QRReadActivity extends AppCompatActivity {
     }
     public void setScreenQR(View v) {
         Intent intent = new Intent(QRReadActivity.this, QRCodeActivity.class);
-        startActivity(intent);
-    }
-    public void setScreenList(View v){
-        Intent intent = new Intent(QRReadActivity.this, ListActivity.class);
         startActivity(intent);
     }
 }
