@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private List<RowData> list;
+    private List<User> list;
 
-    public RecycleViewAdapter(List<RowData> list) {
+    public RecycleViewAdapter(List<User> list) {
         this.list = list;
     }
 
@@ -24,8 +24,10 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.titleView.setText(list.get(position).getTitle());
-        holder.detailView.setText(list.get(position).getDetail());
+        holder.nameView.setText(list.get(position).getName());
+        holder.twitterView.setText(list.get(position).getTw());
+        holder.githubView.setText(list.get(position).getGh());
+
     }
 
     @Override

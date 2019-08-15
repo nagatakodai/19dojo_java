@@ -5,12 +5,13 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
-    public TextView titleView;
-    public TextView detailView;
+    public TextView nameView;
+    public TextView twitterView;
+    public TextView githubView;
     public ViewHolder(View itemView) {
         super(itemView);
-        titleView = (TextView) itemView.findViewById(R.id.title);
-        detailView = (TextView) itemView.findViewById(R.id.detail);
-
+        nameView = itemView.findViewById(R.id.name);
+        twitterView = itemView.findViewById(R.id.twitter);
+        githubView = itemView.findViewById(R.id.github);
     }
 }

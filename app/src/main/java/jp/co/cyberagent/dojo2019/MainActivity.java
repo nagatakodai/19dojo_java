@@ -3,7 +3,6 @@ package jp.co.cyberagent.dojo2019;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
-//import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -12,7 +11,6 @@ import android.content.Intent;
 public class MainActivity extends AppCompatActivity {
     private String[] str = new String[3];
     private EditText[] editText = new EditText[3];
-    //TextView[] textView = new TextView[3];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

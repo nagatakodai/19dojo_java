@@ -12,6 +12,12 @@ public interface UserDao {
     @Query("SELECT * FROM user")
     List<User> getAll();
 
+   @Query("SELECT tw FROM user WHERE uid")
+    String getTwitter();
+
+    @Query("SELECT gh FROM user WHERE uid")
+    String getGitHub();
+
     @Insert
     void insertAll(User... users);
 

@@ -14,5 +14,7 @@
     <string name="input_name">name</string>
     <string name="test1">test</string>
     <string name="list">list</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
 
 </resources>

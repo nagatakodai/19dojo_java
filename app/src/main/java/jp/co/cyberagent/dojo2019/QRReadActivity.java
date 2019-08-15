@@ -1,8 +1,10 @@
 package jp.co.cyberagent.dojo2019;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -21,15 +23,40 @@ public class QRReadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        User user = new User();
-        AppDatabase db = AppDatabaseSingleton.getInstance(QRReadActivity.this);
         if(result != null) {
-            Log.d("readQR", result.getContents());
+            Toast.makeText(QRReadActivity.this, ""+result.getContents(),Toast.LENGTH_LONG).show();
             /*ここでdbに保存する*/
-            user.setUid(1);
-            user.setName(result.getContents());
-            db.userDao().insertAll(user);
-        } else {
+            final User user = new User();
+
+            final AppDatabase db = AppDatabaseSingleton.getInstance(QRReadActivity.this);
+            int indexStart = result.getContents().indexOf("iam=");
+
+            int indexEnd = result.getContents().indexOf("&tw");
+
+            user.setName(result.getContents().substring(indexStart+4 , indexEnd));
+
+            indexStart = result.getContents().indexOf("tw=");
+            indexEnd = result.getContents().indexOf("&gh");
+
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("http");
+            builder.authority("www.twitter.com");
+            builder.path(result.getContents().substring(indexStart+3 , indexEnd));
+            user.setTw(builder.toString());
+
+            indexStart = result.getContents().indexOf("gh=");
+            builder.scheme("http");
+            builder.authority("www.github.com");
+            builder.path(result.getContents().substring(indexStart+3));
+            user.setGh(builder.toString());
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    db.userDao().insertAll(user);
+                }
+            }).start();
+            } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
 

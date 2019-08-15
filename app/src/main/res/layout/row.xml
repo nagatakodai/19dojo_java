@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical" android:layout_width="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal" android:layout_width="match_parent"
               android:layout_height="wrap_content">
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                tools:src="@drawable/twitter"
+                android:id="@+id/imageView2"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/todo2"
+                app:srcCompat="@drawable/twitter"
+                android:onClick=""/>
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                tools:src="@drawable/github"
+                android:id="@+id/imageView3"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/github"
+                android:onClick="setScreenWebView"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
             <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"/>
             <TextView
-                    android:id="@+id/detail"
+                    android:id="@+id/twitter"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"/>
-
+            <TextView
+                    android:id="@+id/github"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
