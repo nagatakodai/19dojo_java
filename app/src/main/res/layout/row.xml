@@ -11,16 +11,16 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 tools:src="@drawable/twitter"
-                android:id="@+id/imageView2"
+                android:id="@+id/imageViewTw"
                 android:scaleType="centerInside"
                 android:contentDescription="@string/todo2"
                 app:srcCompat="@drawable/twitter"
-                android:onClick=""/>
+                android:onClick="setScreenWebView"/>
         <ImageView
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 tools:src="@drawable/github"
-                android:id="@+id/imageView3"
+                android:id="@+id/imageViewGh"
                 android:scaleType="centerInside"
                 android:contentDescription="@string/todo"
                 app:srcCompat="@drawable/github"
