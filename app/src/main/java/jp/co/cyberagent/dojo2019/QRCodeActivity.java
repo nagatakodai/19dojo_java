@@ -5,11 +5,15 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.AndroidRuntimeException;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
@@ -17,6 +21,30 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class QRCodeActivity extends AppCompatActivity {
     private String[] str = new String[3];
+    private TextView mTextMessage;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent intent = new Intent(QRCodeActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    return true;
+                case R.id.navigation_dashboard:
+                    intent = new Intent(QRCodeActivity.this, QRCodeActivity.class);
+                    startActivity(intent);
+                    return true;
+                case R.id.navigation_notifications:
+                    intent = new Intent(QRCodeActivity.this, ListActivity.class);
+                    startActivity(intent);
+                    return true;
+            }
+            return false;
+        }
+
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +66,9 @@ public class QRCodeActivity extends AppCompatActivity {
         } catch (WriterException e) {
             throw new AndroidRuntimeException("Barcode Error.", e);
         }
+        mTextMessage = (TextView) findViewById(R.id.message);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     public void setScreenMain(View v) {
         Intent intent = new Intent(QRCodeActivity.this, MainActivity.class);

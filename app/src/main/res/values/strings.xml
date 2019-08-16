@@ -16,5 +16,7 @@
     <string name="list">list</string>
     <string name="todo">TODO</string>
     <string name="todo2">TODO</string>
-
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">QRCode</string>
+    <string name="title_notifications">List</string>
 </resources>
