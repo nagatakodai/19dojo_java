@@ -28,7 +28,7 @@ public class ListActivity extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ListActivity.this, users.size()+"番目に登録しました" ,Toast.LENGTH_LONG).show();
+                        Toast.makeText(ListActivity.this, users.size()+"人登録されています" ,Toast.LENGTH_LONG).show();
                         RecycleViewAdapter adapter = new RecycleViewAdapter(users);
                         LinearLayoutManager llm = new LinearLayoutManager(ListActivity.this);
 
