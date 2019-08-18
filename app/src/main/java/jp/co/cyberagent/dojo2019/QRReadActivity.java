@@ -26,7 +26,7 @@ public class QRReadActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
-            Toast.makeText(QRReadActivity.this, ""+result.getContents(),Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"読み込みました",Toast.LENGTH_LONG).show();
             /*ここでdbに保存する*/
             final User user = new User();
 
