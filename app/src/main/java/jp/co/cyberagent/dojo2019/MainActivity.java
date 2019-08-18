@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
        /* getSupportFragmentManager().beginTransaction()
                 .replace(//R.id.fragmentContainer,BlankFragment.newInstance)
                 .commit();*/
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

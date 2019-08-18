@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -29,9 +31,17 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.nameView.setText(Uri.decode(list.get(position).getName()));
-        holder.twitterView.setText(Uri.decode("TwitterID:"+list.get(position).getTw().substring(23)));
-        holder.githubView.setText(Uri.decode("GithubID:"+list.get(position).getGh().substring(22)));
-        holder.imageViewTw.setOnClickListener(new View.OnClickListener() {
+        try {
+            holder.twitterView.setText(Uri.decode("TwitterID : " + list.get(position).getTw().substring(23)));
+        }catch (StringIndexOutOfBoundsException e){
+            holder.twitterView.setText("TwitterID : null");
+        }
+        try {
+            holder.githubView.setText(Uri.decode("GithubID : "+list.get(position).getGh().substring(22)));
+            }catch (StringIndexOutOfBoundsException e){
+            holder.githubView.setText("GithubID : null");
+        }
+            holder.imageViewTw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), WebViewActivity.class);

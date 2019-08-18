@@ -22,7 +22,7 @@ public class ListActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final AppDatabase db = AppDatabaseSingleton.getInstance(ListActivity.this);
+                AppDatabase db = AppDatabaseSingleton.getInstance(ListActivity.this);
                 final List<User> users;
                 users = db.userDao().getAll();
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
