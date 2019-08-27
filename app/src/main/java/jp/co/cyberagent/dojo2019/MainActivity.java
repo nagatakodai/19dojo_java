@@ -65,20 +65,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClickKeep(View v) {
-        {
+       /* {
             editText[0] = findViewById(R.id.text1);
             str[0] = editText[0].getText().toString();
             editText[1] = findViewById(R.id.text2);
             str[1] = editText[1].getText().toString();
             editText[2] = findViewById(R.id.text3);
             str[2] = editText[2].getText().toString();
-        } // 入力値をString型に代入
+        } // 入力値をString型に代入 */
         {
             SharedPreferences data = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = data.edit();
-            editor.putString("name", str[0]);
-            editor.putString("github", str[1]);
-            editor.putString("twitter", str[2]);
+            editor.putString("name", findViewById(R.id.text1).toString());
+            editor.putString("github", findViewById(R.id.text2).toString());
+            editor.putString("twitter", findViewById(R.id.text3).toString());
             editor.apply();
         } //String型の入力値をeditorに代入
 
